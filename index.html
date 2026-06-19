@@ -20,7 +20,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1rem;
+            padding: 0.5rem;
             transition: background 0.4s, color 0.3s;
         }
         body.light {
@@ -28,17 +28,20 @@
             color: #1a1628;
         }
         .pixel-wrapper {
-            max-width: 780px;
+            max-width: 100%;
             width: 100%;
+            min-height: 98vh;
             background: rgba(18, 15, 34, 0.75);
             backdrop-filter: blur(8px);
             border: 3px solid #8a7cf0;
-            border-radius: 50px 50px 30px 30px;
-            padding: 2rem 1.8rem;
+            border-radius: 40px;
+            padding: 2rem 2.5rem 1.8rem;
             box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(120, 100, 255, 0.1);
             position: relative;
             overflow: hidden;
             transition: background 0.4s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         body.light .pixel-wrapper {
             background: rgba(240, 235, 220, 0.85);
@@ -53,54 +56,57 @@
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
-            opacity: 0.3;
+            opacity: 0.2;
         }
         .pixel-bg span {
             position: absolute;
             display: block;
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
             background: #7b6ef6;
-            opacity: 0.2;
+            opacity: 0.12;
             animation: floatPixel 22s infinite alternate ease-in-out;
             border-radius: 6px;
             box-shadow: 0 0 20px #9b8cff;
         }
-        .pixel-bg span:nth-child(1) { left: 5%; top: 8%; animation-duration: 24s; background: #f7b731; width: 32px; height: 32px; }
+        .pixel-bg span:nth-child(1) { left: 5%; top: 8%; animation-duration: 24s; background: #f7b731; width: 40px; height: 40px; }
         .pixel-bg span:nth-child(2) { left: 85%; top: 75%; animation-duration: 20s; background: #ff6b8a; }
-        .pixel-bg span:nth-child(3) { left: 15%; top: 90%; animation-duration: 26s; background: #4dd0e1; width: 28px; height: 28px; }
+        .pixel-bg span:nth-child(3) { left: 15%; top: 90%; animation-duration: 26s; background: #4dd0e1; width: 34px; height: 34px; }
         .pixel-bg span:nth-child(4) { left: 75%; top: 12%; animation-duration: 18s; background: #b388ff; }
-        .pixel-bg span:nth-child(5) { left: 45%; top: 45%; animation-duration: 30s; background: #ffd54f; width: 40px; height: 40px; }
-        .pixel-bg span:nth-child(6) { left: 30%; top: 60%; animation-duration: 28s; background: #82b1ff; width: 18px; height: 18px; }
+        .pixel-bg span:nth-child(5) { left: 45%; top: 45%; animation-duration: 30s; background: #ffd54f; width: 50px; height: 50px; }
+        .pixel-bg span:nth-child(6) { left: 30%; top: 60%; animation-duration: 28s; background: #82b1ff; width: 22px; height: 22px; }
         @keyframes floatPixel {
             0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            100% { transform: translate(40px, -40px) rotate(15deg) scale(1.4); }
+            100% { transform: translate(50px, -50px) rotate(15deg) scale(1.5); }
         }
 
         .content {
             position: relative;
             z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* ----- language & theme row ----- */
+        /* ----- top bar ----- */
         .top-bar {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            gap: 0.8rem 1rem;
-            margin-bottom: 1.8rem;
+            gap: 0.8rem 1.5rem;
+            margin-bottom: 1.5rem;
         }
         .lang-group {
             display: flex;
-            gap: 0.6rem;
+            gap: 0.8rem;
         }
         .lang-btn {
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
             background: #25203f;
             border: 2px solid #6253c0;
             color: #cbc3ff;
-            padding: 0.4rem 1.4rem;
+            padding: 0.5rem 1.8rem;
             border-radius: 60px;
             font-size: 0.75rem;
             cursor: pointer;
@@ -124,10 +130,10 @@
             background: #25203f;
             border: 2px solid #6253c0;
             color: #cbc3ff;
-            padding: 0.4rem 1.2rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 60px;
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             cursor: pointer;
             box-shadow: 0 4px 0 #1a1530;
             transition: 0.2s;
@@ -154,10 +160,10 @@
         /* header */
         .pixel-header {
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             text-align: center;
             color: #eee8ff;
-            text-shadow: 5px 5px 0 #3d3280, 0 0 40px #7766f0;
+            text-shadow: 5px 5px 0 #3d3280, 0 0 50px #7766f0;
             letter-spacing: 2px;
             word-break: break-word;
             padding-bottom: 0.6rem;
@@ -173,34 +179,37 @@
         .card-grid {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
             margin-bottom: 1.8rem;
+            flex: 1;
         }
         .pixel-card {
-            background: rgba(28, 24, 50, 0.7);
+            background: rgba(28, 24, 50, 0.75);
             backdrop-filter: blur(4px);
-            border: 2px solid #6a5bd0;
+            border: 2.5px solid #6a5bd0;
             border-radius: 40px;
-            padding: 0.9rem 1.5rem 0.9rem 1.8rem;
+            padding: 1rem 1.8rem 1rem 2rem;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            transition: 0.2s;
-            box-shadow: 0 8px 0 #1d1738;
+            transition: 0.25s;
+            box-shadow: 0 6px 0 #1d1738;
+            min-height: 72px;
+            position: relative;
         }
         body.light .pixel-card {
-            background: rgba(230, 223, 205, 0.7);
+            background: rgba(230, 223, 205, 0.8);
             border-color: #6b5bb0;
-            box-shadow: 0 8px 0 #b3a3d0;
+            box-shadow: 0 6px 0 #b3a3d0;
         }
         .pixel-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: #a89aff;
-            box-shadow: 0 12px 0 #1d1738;
+            box-shadow: 0 9px 0 #1d1738;
         }
         body.light .pixel-card:hover {
-            box-shadow: 0 12px 0 #b3a3d0;
+            box-shadow: 0 9px 0 #b3a3d0;
         }
         .card-title {
             font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
@@ -209,111 +218,203 @@
             color: #f0ebff;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            flex: 1 1 180px;
+            gap: 0.6rem;
+            flex: 1 1 200px;
+            line-height: 1.5;
+            flex-wrap: wrap;
         }
         body.light .card-title {
             color: #1d1738;
         }
         .card-title .pixel-icon {
             font-family: 'Press Start 2P', cursive;
-            font-size: 1.3rem;
-            margin-left: 6px;
+            font-size: 1.1rem;
+            margin-left: 4px;
         }
         .card-title .en {
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 0.5px;
         }
+        .flag-emoji {
+            font-size: 1.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .lang-badge {
+            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
+            font-size: 0.5rem;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.15);
+            color: #cbc3ff;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        body.light .lang-badge {
+            background: rgba(0,0,0,0.06);
+            border-color: rgba(0,0,0,0.1);
+            color: #3d356b;
+        }
+        .lang-badge.persian {
+            border-color: #4dd0e1;
+            color: #4dd0e1;
+        }
+        body.light .lang-badge.persian {
+            border-color: #00897b;
+            color: #00897b;
+        }
+        .lang-badge.english {
+            border-color: #ff6b8a;
+            color: #ff6b8a;
+        }
+        body.light .lang-badge.english {
+            border-color: #c62848;
+            color: #c62848;
+        }
+        .lang-badge.both {
+            border-color: #ffb74d;
+            color: #ffb74d;
+            display: flex;
+            gap: 0.3rem;
+        }
+        body.light .lang-badge.both {
+            border-color: #e69a2e;
+            color: #e69a2e;
+        }
+
         .join-btn {
             background: #7b6ef6;
             border: none;
             border-radius: 60px;
-            padding: 0.6rem 1.6rem;
-            font-family: 'Vazirmatn', 'Press Start 2P', sans-serif;
+            padding: 0.5rem 1.6rem;
+            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
             font-weight: bold;
             color: #0b0820;
-            border-bottom: 5px solid #45389e;
+            border-bottom: 4px solid #45389e;
             cursor: pointer;
             transition: 0.08s linear;
-            font-size: 0.95rem;
-            box-shadow: 0 5px 0 #2d2370;
+            font-size: 0.7rem;
+            box-shadow: 0 4px 0 #2d2370;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            min-width: 100px;
+            gap: 5px;
+            min-width: 90px;
             justify-content: center;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
         }
         .join-btn:active {
-            transform: translateY(5px);
+            transform: translateY(4px);
             box-shadow: none;
         }
         .join-btn:hover {
             background: #9589ff;
         }
-        .copy-btn {
-            background: #3d347a;
-            border-bottom: 5px solid #1f1847;
-            box-shadow: 0 5px 0 #1a143a;
-            color: #d9d0ff;
-            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            font-size: 0.7rem;
+
+        /* highlighted card (IDK groups) - soft glow instead of heavy animation */
+        .highlight-card {
+            border-color: #ffb74d;
+            box-shadow: 0 6px 0 #b86e1a, 0 0 20px rgba(255, 183, 77, 0.25);
         }
-        .copy-btn:hover {
-            background: #6252c4;
+        body.light .highlight-card {
+            border-color: #e69a2e;
+            box-shadow: 0 6px 0 #a06f20, 0 0 20px rgba(255, 183, 77, 0.2);
+        }
+        .highlight-card:hover {
+            box-shadow: 0 9px 0 #b86e1a, 0 0 35px rgba(255, 183, 77, 0.35);
+        }
+        body.light .highlight-card:hover {
+            box-shadow: 0 9px 0 #a06f20, 0 0 35px rgba(255, 183, 77, 0.3);
+        }
+        .highlight-card .join-btn {
+            background: #ffb74d;
+            border-bottom: 4px solid #b86e1a;
+            box-shadow: 0 4px 0 #8a5200;
+            color: #1f1600;
+        }
+        .highlight-card .join-btn:hover {
+            background: #ffcc80;
         }
 
-        /* special card for ad removal */
-        .ad-card {
-            background: rgba(40, 32, 70, 0.8);
-            border-color: #b388ff;
-            margin-top: 0.2rem;
+        /* pinned card - soft glow */
+        .pinned-card {
+            border-color: #ff6b8a;
+            box-shadow: 0 6px 0 #b84a5e, 0 0 25px rgba(255, 107, 138, 0.2);
         }
-        body.light .ad-card {
-            background: rgba(220, 212, 190, 0.8);
-            border-color: #8a7ac0;
+        body.light .pinned-card {
+            border-color: #d45a78;
+            box-shadow: 0 6px 0 #a04358, 0 0 25px rgba(255, 107, 138, 0.2);
         }
-        .ad-card .card-title {
+        .pinned-card:hover {
+            box-shadow: 0 9px 0 #b84a5e, 0 0 40px rgba(255, 107, 138, 0.3);
+        }
+        body.light .pinned-card:hover {
+            box-shadow: 0 9px 0 #a04358, 0 0 40px rgba(255, 107, 138, 0.3);
+        }
+        .pinned-card .join-btn {
+            background: #ff6b8a;
+            border-bottom: 4px solid #b84a5e;
+            box-shadow: 0 4px 0 #8a3550;
+            color: #1a0610;
+        }
+        .pinned-card .join-btn:hover {
+            background: #ff8aa3;
+        }
+
+        /* subtle text inside pinned card */
+        .pinned-sub {
+            position: absolute;
+            bottom: 4px;
+            right: 2rem;
+            font-size: 0.55rem;
+            opacity: 0.35;
+            color: #cbc3ff;
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
-        .ad-card .join-btn {
-            background: #ffb74d;
-            border-bottom: 5px solid #b86e1a;
-            box-shadow: 0 5px 0 #8a5200;
-            color: #1f1600;
-            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            font-size: 0.7rem;
-        }
-        .ad-card .join-btn:hover {
-            background: #ffcc80;
+        body.light .pinned-sub {
+            color: #3d356b;
         }
 
         .footer {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 1.2rem;
             color: #7f76b0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.6;
             font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
             letter-spacing: 0.5px;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
         body.light .footer {
             color: #3e356b;
+            border-top-color: rgba(0,0,0,0.05);
         }
 
         @media (max-width: 620px) {
-            .pixel-header { font-size: 1.5rem; }
-            .pixel-card { flex-direction: column; align-items: stretch; gap: 0.6rem; }
-            .join-btn { align-self: flex-start; min-width: 80px; }
-            .card-title { font-size: 1rem; }
-            .top-bar { flex-direction: column; align-items: stretch; gap: 0.6rem; }
-            .lang-group { justify-content: center; }
-            .theme-btn { align-self: center; }
+            .pixel-wrapper { padding: 1.2rem 1rem; border-radius: 28px; }
+            .pixel-header { font-size: 1.6rem; }
+            .pixel-card { padding: 0.8rem 1.2rem; min-height: 60px; gap: 0.6rem; }
+            .join-btn { min-width: 70px; font-size: 0.6rem; padding: 0.4rem 1rem; }
+            .card-title { font-size: 1rem; flex: 1 1 140px; }
+            .top-bar { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
+            .lang-btn { font-size: 0.55rem; padding: 0.3rem 1rem; }
+            .theme-btn { font-size: 0.55rem; padding: 0.3rem 0.8rem; }
+            .flag-emoji { font-size: 1.2rem; }
+            .lang-badge { font-size: 0.4rem; padding: 0.1rem 0.5rem; }
+            .pinned-sub { font-size: 0.45rem; right: 1.2rem; bottom: 3px; }
         }
         @media (max-width: 450px) {
-            .pixel-wrapper { padding: 1.2rem; }
+            .pixel-wrapper { padding: 0.8rem 0.6rem; border-radius: 20px; }
+            .pixel-header { font-size: 1.2rem; }
+            .card-title { font-size: 0.85rem; }
+            .join-btn { font-size: 0.5rem; min-width: 55px; padding: 0.3rem 0.6rem; }
+            .flag-emoji { font-size: 1rem; }
+            .lang-badge { font-size: 0.35rem; padding: 0.05rem 0.4rem; }
+            .pinned-sub { font-size: 0.4rem; right: 0.8rem; bottom: 2px; }
         }
     </style>
 </head>
@@ -323,7 +424,7 @@
             <span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
         <div class="content">
-            <!-- top bar: language + theme -->
+            <!-- top bar -->
             <div class="top-bar">
                 <div class="lang-group">
                     <button class="lang-btn active" data-lang="fa" id="langFa">🇮🇷 فارسی</button>
@@ -338,49 +439,51 @@
             <!-- cards -->
             <div class="card-grid" id="cardContainer"></div>
 
-            <!-- special ad removal card -->
-            <div class="pixel-card ad-card" style="margin-top: 0.2rem;">
-                <span class="card-title" id="copyLabel"><span class="pixel-icon">📟</span> کد حذف تبلیغ</span>
-                <button class="join-btn copy-btn" id="copyDelAd">🔔 زنگ بزن 0000</button>
-            </div>
-
             <div class="footer" id="footerCredit">مالک @itsspr27</div>
         </div>
     </div>
 
     <script>
         (function() {
-            // ---------- data ----------
+            // ---------- data with new pinned card ----------
             const data = {
                 fa: {
                     title: 'مجموعهٔ پیکسل',
                     cards: [
-                        { label: 'کانال تیمارستان پیکسلی روبیکا', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ' },
-                        { label: 'پیکسل گیف روبیکا', link: 'https://rubika.ir/joinc/EGDEIICB0SSMRFGCWKPLXWXLHPZYBCXZ' },
-                        { label: 'گروه عا نمیدانم روبیکا', link: 'https://rubika.ir/joing/+BAFABIJID0XTGYKISOYDNVWJPHQZLGNK' },
-                        { label: 'گروه عا نمیدانم تلگرام', link: 'https://t.me/+1tLJ3e2tvIs3YWY0' },
-                        { label: 'تیمارستان پیکسلی تلگرام', link: 'https://t.me/amoolac' },
-                        { label: 'پیکسل گیف تلگرام', link: 'https://t.me/pixel_gifit' },
-                        { label: 'سرور lac vanila', link: '#' }
+                        { 
+                            label: 'pixel gem studio', 
+                            link: 'https://t.me/pixel_gem_studio', 
+                            flag: '🇺🇸', 
+                            lang: 'english', 
+                            pinned: true,
+                            subtitle: 'کد حذف تبلیغ اینجاست'
+                        },
+                        { label: 'گروه عا نمیدانم تلگرام', link: 'https://t.me/+1tLJ3e2tvIs3YWY0', flag: '🇮🇷🇺🇸', lang: 'both' },
+                        { label: 'کانال تیمارستان پیکسلی روبیکا', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ', flag: '🇮🇷', lang: 'persian' },
+                        { label: 'پیکسل گیف روبیکا', link: 'https://rubika.ir/joinc/EGDEIICB0SSMRFGCWKPLXWXLHPZYBCXZ', flag: '🇮🇷', lang: 'persian' },
+                        { label: 'گروه عا نمیدانم روبیکا', link: 'https://rubika.ir/joing/+BAFABIJID0XTGYKISOYDNVWJPHQZLGNK', flag: '🇮🇷', lang: 'persian' },
+                        { label: 'پیکسل گیف تلگرام', link: 'https://t.me/pixel_gifit', flag: '🇮🇷', lang: 'persian' }
                     ],
-                    copyLabel: 'کد حذف تبلیغ',
-                    copyValue: '(private)del_ad',
                     footer: 'مالک @itsspr27',
                     joinText: '🎮 جوین'
                 },
                 en: {
                     title: 'Pixel Collection',
                     cards: [
-                        { label: 'Pixel Asylum Rubika', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ' },
-                        { label: 'Pixel GIF Rubika', link: 'https://rubika.ir/joinc/EGDEIICB0SSMRFGCWKPLXWXLHPZYBCXZ' },
-                        { label: 'IDK Group Rubika', link: 'https://rubika.ir/joing/+BAFABIJID0XTGYKISOYDNVWJPHQZLGNK' },
-                        { label: 'IDK Group Telegram', link: 'https://t.me/+1tLJ3e2tvIs3YWY0' },
-                        { label: 'Pixel Asylum Telegram', link: 'https://t.me/amoolac' },
-                        { label: 'Pixel GIF Telegram', link: 'https://t.me/pixel_gifit' },
-                        { label: 'Lac Vanilla Server', link: '#' }
+                        { 
+                            label: 'pixel gem studio', 
+                            link: 'https://t.me/pixel_gem_studio', 
+                            flag: '🇺🇸', 
+                            lang: 'english', 
+                            pinned: true,
+                            subtitle: 'ad removal code is here'
+                        },
+                        { label: 'IDK Group Telegram', link: 'https://t.me/+1tLJ3e2tvIs3YWY0', flag: '🇮🇷🇺🇸', lang: 'both' },
+                        { label: 'Pixel Asylum Rubika', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ', flag: '🇮🇷', lang: 'persian' },
+                        { label: 'Pixel GIF Rubika', link: 'https://rubika.ir/joinc/EGDEIICB0SSMRFGCWKPLXWXLHPZYBCXZ', flag: '🇮🇷', lang: 'persian' },
+                        { label: 'IDK Group Rubika', link: 'https://rubika.ir/joing/+BAFABIJID0XTGYKISOYDNVWJPHQZLGNK', flag: '🇮🇷', lang: 'persian' },
+                        { label: 'Pixel GIF Telegram', link: 'https://t.me/pixel_gifit', flag: '🇮🇷', lang: 'persian' }
                     ],
-                    copyLabel: 'Ad removal code',
-                    copyValue: '(private)del_ad',
                     footer: 'owner @itsspr27',
                     joinText: '🎮 Join'
                 }
@@ -394,11 +497,22 @@
             const mainTitle = document.getElementById('mainTitle');
             const cardContainer = document.getElementById('cardContainer');
             const footerCredit = document.getElementById('footerCredit');
-            const copyLabel = document.getElementById('copyLabel');
-            const copyDelAdBtn = document.getElementById('copyDelAd');
             const langFa = document.getElementById('langFa');
             const langEn = document.getElementById('langEn');
             const themeToggle = document.getElementById('themeToggle');
+
+            // get language badge HTML
+            function getLangBadge(lang) {
+                if (!lang) return '';
+                if (lang === 'persian') {
+                    return `<span class="lang-badge persian">PERSIAN</span>`;
+                } else if (lang === 'english') {
+                    return `<span class="lang-badge english">ENGLISH</span>`;
+                } else if (lang === 'both') {
+                    return `<span class="lang-badge both">PERSIAN · ENGLISH</span>`;
+                }
+                return '';
+            }
 
             // ---------- render cards ----------
             function renderCards(lang) {
@@ -406,64 +520,50 @@
                 if (!langData) return;
                 const cards = langData.cards;
                 const joinText = langData.joinText;
+                
+                // sort: pinned first
+                const sorted = [...cards].sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
+
                 let html = '';
-                cards.forEach((card, index) => {
-                    const isSpecial = (lang === 'fa' && index === 6) || (lang === 'en' && index === 6);
-                    const link = card.link;
-                    const label = card.label;
-                    // for special, we still show join but link is #, we handle click
+                sorted.forEach((card, idx) => {
+                    const isHighlight = card.label.includes('عا نمیدانم') || card.label.includes('IDK Group');
+                    const isPinned = card.pinned === true;
+                    
+                    let classes = 'pixel-card';
+                    if (isHighlight) classes += ' highlight-card';
+                    if (isPinned) classes += ' pinned-card';
+                    
+                    const flagHtml = card.flag ? `<span class="flag-emoji">${card.flag}</span>` : '';
+                    const badgeHtml = getLangBadge(card.lang);
+                    const subtitleHtml = card.subtitle ? `<span class="pinned-sub">${card.subtitle}</span>` : '';
+                    
                     html += `
-                        <div class="pixel-card" data-card-index="${index}">
-                            <span class="card-title">${label}</span>
-                            <button class="join-btn" data-link="${link}" data-special="${isSpecial ? 'true' : 'false'}">
+                        <div class="${classes}" data-card-index="${idx}">
+                            <span class="card-title">${flagHtml} ${card.label} ${badgeHtml}</span>
+                            <button class="join-btn" data-link="${card.link}">
                                 ${joinText}
                             </button>
+                            ${subtitleHtml}
                         </div>
                     `;
                 });
                 cardContainer.innerHTML = html;
 
-                // update copy label, footer, title
-                copyLabel.innerHTML = `<span class="pixel-icon">📟</span> ${langData.copyLabel}`;
+                // update footer and title
                 footerCredit.textContent = langData.footer;
                 mainTitle.textContent = langData.title;
 
-                // attach click listeners to join buttons
+                // attach click listeners
                 document.querySelectorAll('.pixel-card .join-btn').forEach(btn => {
                     btn.addEventListener('click', function(e) {
                         e.stopPropagation();
                         const link = this.getAttribute('data-link');
-                        const isSpecial = this.getAttribute('data-special') === 'true';
-                        if (isSpecial) {
-                            // special card (lac vanilla) - just do nothing or maybe show a hint?
-                            // we ignore, but we can show a small message? we keep silent.
-                            return;
-                        }
                         if (link && link !== '#') {
                             window.open(link, '_blank');
                         }
                     });
                 });
             }
-
-            // ---------- copy ad code (new behavior: show alert with 0000) ----------
-            copyDelAdBtn.addEventListener('click', function() {
-                const langData = data[currentLang];
-                const code = langData.copyValue;
-                // new: show alert with "زنگ بزن 0000 تا کد حذف بشه" 
-                // but also copy code to clipboard
-                navigator.clipboard.writeText(code).then(() => {
-                    alert('✅ کد کپی شد! / Code copied!\n📞 زنگ بزن 0000 تا کد حذف بشه');
-                }).catch(() => {
-                    const textarea = document.createElement('textarea');
-                    textarea.value = code;
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand('copy');
-                    textarea.remove();
-                    alert('✅ کد کپی شد! / Code copied!\n📞 زنگ بزن 0000 تا کد حذف بشه');
-                });
-            });
 
             // ---------- switch language ----------
             function setLanguage(lang) {
@@ -473,7 +573,6 @@
                 document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
                 document.documentElement.lang = lang;
                 renderCards(lang);
-                // reapply theme class (unchanged)
             }
 
             // ---------- theme toggle ----------
