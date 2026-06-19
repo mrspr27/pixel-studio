@@ -15,63 +15,66 @@
         }
         body {
             font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
-            background: #0f0e1a;
+            background: #0c0a1a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background 0.3s, color 0.3s;
             padding: 1rem;
+            transition: background 0.4s, color 0.3s;
         }
         body.light {
-            background: #f2efe6;
-            color: #1e1b2b;
+            background: #e8e2d4;
+            color: #1a1628;
         }
         .pixel-wrapper {
-            max-width: 700px;
+            max-width: 780px;
             width: 100%;
-            background: rgba(20, 18, 35, 0.7);
-            backdrop-filter: blur(6px);
-            border: 3px solid #7b6ef6;
-            border-radius: 40px 40px 20px 20px;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            background: rgba(18, 15, 34, 0.75);
+            backdrop-filter: blur(8px);
+            border: 3px solid #8a7cf0;
+            border-radius: 50px 50px 30px 30px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(120, 100, 255, 0.1);
             position: relative;
             overflow: hidden;
-            transition: background 0.3s, border-color 0.3s;
+            transition: background 0.4s, border-color 0.3s;
         }
         body.light .pixel-wrapper {
-            background: rgba(245, 241, 230, 0.8);
-            border-color: #4a3f8a;
+            background: rgba(240, 235, 220, 0.85);
+            border-color: #6a5bb8;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
         }
-        /* animated background pixels */
+
+        /* animated pixel background */
         .pixel-bg {
             position: absolute;
             inset: 0;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
-            opacity: 0.25;
+            opacity: 0.3;
         }
         .pixel-bg span {
             position: absolute;
             display: block;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: #7b6ef6;
-            opacity: 0.15;
-            animation: floatPixel 18s infinite alternate ease-in-out;
-            border-radius: 4px;
-            box-shadow: 0 0 12px #9b8cff;
+            opacity: 0.2;
+            animation: floatPixel 22s infinite alternate ease-in-out;
+            border-radius: 6px;
+            box-shadow: 0 0 20px #9b8cff;
         }
-        .pixel-bg span:nth-child(1) { left: 5%; top: 10%; animation-duration: 22s; background: #f7b731; }
-        .pixel-bg span:nth-child(2) { left: 80%; top: 70%; animation-duration: 19s; background: #ff6b8a; }
-        .pixel-bg span:nth-child(3) { left: 20%; top: 85%; animation-duration: 25s; background: #4dd0e1; }
-        .pixel-bg span:nth-child(4) { left: 70%; top: 15%; animation-duration: 20s; background: #b388ff; }
-        .pixel-bg span:nth-child(5) { left: 45%; top: 45%; animation-duration: 28s; background: #ffd54f; width: 30px; height: 30px; }
+        .pixel-bg span:nth-child(1) { left: 5%; top: 8%; animation-duration: 24s; background: #f7b731; width: 32px; height: 32px; }
+        .pixel-bg span:nth-child(2) { left: 85%; top: 75%; animation-duration: 20s; background: #ff6b8a; }
+        .pixel-bg span:nth-child(3) { left: 15%; top: 90%; animation-duration: 26s; background: #4dd0e1; width: 28px; height: 28px; }
+        .pixel-bg span:nth-child(4) { left: 75%; top: 12%; animation-duration: 18s; background: #b388ff; }
+        .pixel-bg span:nth-child(5) { left: 45%; top: 45%; animation-duration: 30s; background: #ffd54f; width: 40px; height: 40px; }
+        .pixel-bg span:nth-child(6) { left: 30%; top: 60%; animation-duration: 28s; background: #82b1ff; width: 18px; height: 18px; }
         @keyframes floatPixel {
             0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            100% { transform: translate(30px, -30px) rotate(20deg) scale(1.3); }
+            100% { transform: translate(40px, -40px) rotate(15deg) scale(1.4); }
         }
 
         .content {
@@ -79,25 +82,32 @@
             z-index: 2;
         }
 
-        /* language selector */
-        .lang-selector {
+        /* ----- language & theme row ----- */
+        .top-bar {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem 1rem;
+            margin-bottom: 1.8rem;
+        }
+        .lang-group {
+            display: flex;
+            gap: 0.6rem;
         }
         .lang-btn {
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            background: #2a2542;
-            border: 2px solid #5f53c0;
-            color: #d6d0ff;
-            padding: 0.5rem 1.8rem;
+            background: #25203f;
+            border: 2px solid #6253c0;
+            color: #cbc3ff;
+            padding: 0.4rem 1.4rem;
             border-radius: 60px;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: 0.2s;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 0 #1c1730;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 0 #1a1530;
+            text-transform: uppercase;
         }
         .lang-btn.active {
             background: #7b6ef6;
@@ -110,37 +120,68 @@
             background: #5c4ed6;
             color: white;
         }
+        .theme-btn {
+            background: #25203f;
+            border: 2px solid #6253c0;
+            color: #cbc3ff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
+            font-size: 0.65rem;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #1a1530;
+            transition: 0.2s;
+            letter-spacing: 0.5px;
+        }
+        .theme-btn:hover {
+            background: #5c4ed6;
+            color: white;
+        }
+        body.light .lang-btn,
+        body.light .theme-btn {
+            background: #d8d0bc;
+            border-color: #6a5bb0;
+            color: #1d1735;
+            box-shadow: 0 4px 0 #a395c0;
+        }
+        body.light .lang-btn.active {
+            background: #7b6ef6;
+            color: #0b0920;
+            border-color: #b7acff;
+            box-shadow: 0 4px 0 #4d3fb0;
+        }
 
         /* header */
         .pixel-header {
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             text-align: center;
-            color: #eae4ff;
-            text-shadow: 4px 4px 0 #3d3280, 0 0 20px #7766f0;
+            color: #eee8ff;
+            text-shadow: 5px 5px 0 #3d3280, 0 0 40px #7766f0;
             letter-spacing: 2px;
             word-break: break-word;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px dashed #6b5ed6;
+            padding-bottom: 0.6rem;
+            border-bottom: 4px dashed #6b5ed6;
+            margin-bottom: 1.8rem;
         }
         body.light .pixel-header {
             color: #1d1738;
-            text-shadow: 3px 3px 0 #b3a6f0;
+            text-shadow: 4px 4px 0 #b3a6f0;
         }
 
         /* cards */
         .card-grid {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            margin: 2rem 0 1.8rem;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
         }
         .pixel-card {
-            background: rgba(30, 26, 55, 0.7);
+            background: rgba(28, 24, 50, 0.7);
             backdrop-filter: blur(4px);
-            border: 2px solid #5a4dbb;
-            border-radius: 30px;
-            padding: 1rem 1.5rem 1rem 1.8rem;
+            border: 2px solid #6a5bd0;
+            border-radius: 40px;
+            padding: 0.9rem 1.5rem 0.9rem 1.8rem;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -149,144 +190,158 @@
             box-shadow: 0 8px 0 #1d1738;
         }
         body.light .pixel-card {
-            background: rgba(235, 228, 210, 0.7);
+            background: rgba(230, 223, 205, 0.7);
             border-color: #6b5bb0;
             box-shadow: 0 8px 0 #b3a3d0;
         }
         .pixel-card:hover {
-            transform: translateY(-3px);
-            border-color: #9b8aff;
+            transform: translateY(-4px);
+            border-color: #a89aff;
+            box-shadow: 0 12px 0 #1d1738;
+        }
+        body.light .pixel-card:hover {
+            box-shadow: 0 12px 0 #b3a3d0;
         }
         .card-title {
             font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #f0ebff;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
+            flex: 1 1 180px;
         }
         body.light .card-title {
             color: #1d1738;
         }
         .card-title .pixel-icon {
             font-family: 'Press Start 2P', cursive;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-left: 6px;
         }
         .card-title .en {
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 0.5px;
         }
         .join-btn {
             background: #7b6ef6;
             border: none;
             border-radius: 60px;
-            padding: 0.6rem 1.4rem;
+            padding: 0.6rem 1.6rem;
             font-family: 'Vazirmatn', 'Press Start 2P', sans-serif;
             font-weight: bold;
             color: #0b0820;
-            border-bottom: 4px solid #45389e;
+            border-bottom: 5px solid #45389e;
             cursor: pointer;
             transition: 0.08s linear;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 0 #2d2370;
+            font-size: 0.95rem;
+            box-shadow: 0 5px 0 #2d2370;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
+            min-width: 100px;
+            justify-content: center;
         }
         .join-btn:active {
-            transform: translateY(4px);
+            transform: translateY(5px);
             box-shadow: none;
         }
         .join-btn:hover {
             background: #9589ff;
         }
-
         .copy-btn {
             background: #3d347a;
-            border-bottom: 4px solid #1f1847;
-            box-shadow: 0 4px 0 #1a143a;
+            border-bottom: 5px solid #1f1847;
+            box-shadow: 0 5px 0 #1a143a;
             color: #d9d0ff;
+            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
+            font-size: 0.7rem;
         }
         .copy-btn:hover {
             background: #6252c4;
         }
 
-        .theme-toggle {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 1.2rem;
+        /* special card for ad removal */
+        .ad-card {
+            background: rgba(40, 32, 70, 0.8);
+            border-color: #b388ff;
+            margin-top: 0.2rem;
         }
-        .theme-btn {
-            background: #282340;
-            border: 2px solid #6a5cc0;
-            color: #ccc4ff;
-            border-radius: 60px;
-            padding: 0.3rem 1rem;
+        body.light .ad-card {
+            background: rgba(220, 212, 190, 0.8);
+            border-color: #8a7ac0;
+        }
+        .ad-card .card-title {
+            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .ad-card .join-btn {
+            background: #ffb74d;
+            border-bottom: 5px solid #b86e1a;
+            box-shadow: 0 5px 0 #8a5200;
+            color: #1f1600;
             font-family: 'Press Start 2P', 'Vazirmatn', cursive;
             font-size: 0.7rem;
-            cursor: pointer;
-            transition: 0.2s;
         }
-        body.light .theme-btn {
-            background: #ddd4bc;
-            border-color: #5f4d9e;
-            color: #1e1735;
+        .ad-card .join-btn:hover {
+            background: #ffcc80;
         }
+
         .footer {
             text-align: center;
             margin-top: 2rem;
             color: #7f76b0;
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.6;
             font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+            letter-spacing: 0.5px;
         }
         body.light .footer {
             color: #3e356b;
         }
 
-        /* responsive */
-        @media (max-width: 520px) {
-            .pixel-header { font-size: 1.3rem; }
-            .pixel-card { flex-direction: column; align-items: stretch; gap: 0.5rem; }
-            .join-btn { align-self: flex-start; }
+        @media (max-width: 620px) {
+            .pixel-header { font-size: 1.5rem; }
+            .pixel-card { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+            .join-btn { align-self: flex-start; min-width: 80px; }
             .card-title { font-size: 1rem; }
+            .top-bar { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+            .lang-group { justify-content: center; }
+            .theme-btn { align-self: center; }
+        }
+        @media (max-width: 450px) {
+            .pixel-wrapper { padding: 1.2rem; }
         }
     </style>
 </head>
 <body>
     <div class="pixel-wrapper" id="app">
-        <!-- animated pixel background -->
         <div class="pixel-bg">
-            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
-
         <div class="content">
-            <!-- language selector -->
-            <div class="lang-selector">
-                <button class="lang-btn" data-lang="fa" id="langFa">🇮🇷 فارسی</button>
-                <button class="lang-btn" data-lang="en" id="langEn">🇬🇧 English</button>
-            </div>
-
-            <!-- theme toggle -->
-            <div class="theme-toggle">
+            <!-- top bar: language + theme -->
+            <div class="top-bar">
+                <div class="lang-group">
+                    <button class="lang-btn active" data-lang="fa" id="langFa">🇮🇷 فارسی</button>
+                    <button class="lang-btn" data-lang="en" id="langEn">🇬🇧 English</button>
+                </div>
                 <button class="theme-btn" id="themeToggle">🌓 تم</button>
             </div>
 
             <!-- header -->
             <h1 class="pixel-header" id="mainTitle">مجموعهٔ پیکسل</h1>
 
-            <!-- Cards -->
-            <div class="card-grid" id="cardContainer">
-                <!-- cards will be rendered by js -->
-            </div>
+            <!-- cards -->
+            <div class="card-grid" id="cardContainer"></div>
 
-            <!-- special copy card -->
-            <div class="pixel-card" style="margin-top: 0.2rem;">
-                <span class="card-title" id="copyLabel"><span class="pixel-icon">⌨️</span> کد حذف تبلیغ</span>
-                <button class="join-btn copy-btn" id="copyDelAd">📋 کپی کن</button>
+            <!-- special ad removal card -->
+            <div class="pixel-card ad-card" style="margin-top: 0.2rem;">
+                <span class="card-title" id="copyLabel"><span class="pixel-icon">📟</span> کد حذف تبلیغ</span>
+                <button class="join-btn copy-btn" id="copyDelAd">🔔 زنگ بزن 0000</button>
             </div>
 
             <div class="footer" id="footerCredit">مالک @itsspr27</div>
@@ -306,16 +361,17 @@
                         { label: 'گروه عا نمیدانم تلگرام', link: 'https://t.me/+1tLJ3e2tvIs3YWY0' },
                         { label: 'تیمارستان پیکسلی تلگرام', link: 'https://t.me/amoolac' },
                         { label: 'پیکسل گیف تلگرام', link: 'https://t.me/pixel_gifit' },
-                        { label: 'سرور lac vanila', link: '#' } // special
+                        { label: 'سرور lac vanila', link: '#' }
                     ],
                     copyLabel: 'کد حذف تبلیغ',
                     copyValue: '(private)del_ad',
-                    footer: 'مالک @itsspr27'
+                    footer: 'مالک @itsspr27',
+                    joinText: '🎮 جوین'
                 },
                 en: {
                     title: 'Pixel Collection',
                     cards: [
-                        { label: 'Pixel Asylum Rubika Channel', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ' },
+                        { label: 'Pixel Asylum Rubika', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ' },
                         { label: 'Pixel GIF Rubika', link: 'https://rubika.ir/joinc/EGDEIICB0SSMRFGCWKPLXWXLHPZYBCXZ' },
                         { label: 'IDK Group Rubika', link: 'https://rubika.ir/joing/+BAFABIJID0XTGYKISOYDNVWJPHQZLGNK' },
                         { label: 'IDK Group Telegram', link: 'https://t.me/+1tLJ3e2tvIs3YWY0' },
@@ -325,13 +381,14 @@
                     ],
                     copyLabel: 'Ad removal code',
                     copyValue: '(private)del_ad',
-                    footer: 'owner @itsspr27'
+                    footer: 'owner @itsspr27',
+                    joinText: '🎮 Join'
                 }
             };
 
             // state
             let currentLang = 'fa';
-            let currentTheme = 'dark'; // 'dark' or 'light'
+            let currentTheme = 'dark';
 
             // DOM refs
             const mainTitle = document.getElementById('mainTitle');
@@ -339,7 +396,6 @@
             const footerCredit = document.getElementById('footerCredit');
             const copyLabel = document.getElementById('copyLabel');
             const copyDelAdBtn = document.getElementById('copyDelAd');
-
             const langFa = document.getElementById('langFa');
             const langEn = document.getElementById('langEn');
             const themeToggle = document.getElementById('themeToggle');
@@ -349,27 +405,26 @@
                 const langData = data[lang];
                 if (!langData) return;
                 const cards = langData.cards;
+                const joinText = langData.joinText;
                 let html = '';
                 cards.forEach((card, index) => {
                     const isSpecial = (lang === 'fa' && index === 6) || (lang === 'en' && index === 6);
-                    // for special (lac vanilla) we don't use join link, but we keep button
                     const link = card.link;
                     const label = card.label;
-                    // special card: join button still works but we don't open link? actually we keep it as join but link #, but we want it to look same
-                    // we will handle in click
+                    // for special, we still show join but link is #, we handle click
                     html += `
                         <div class="pixel-card" data-card-index="${index}">
                             <span class="card-title">${label}</span>
                             <button class="join-btn" data-link="${link}" data-special="${isSpecial ? 'true' : 'false'}">
-                                🎮 جوین
+                                ${joinText}
                             </button>
                         </div>
                     `;
                 });
                 cardContainer.innerHTML = html;
 
-                // update copy label
-                copyLabel.innerHTML = `<span class="pixel-icon">⌨️</span> ${langData.copyLabel}`;
+                // update copy label, footer, title
+                copyLabel.innerHTML = `<span class="pixel-icon">📟</span> ${langData.copyLabel}`;
                 footerCredit.textContent = langData.footer;
                 mainTitle.textContent = langData.title;
 
@@ -380,55 +435,45 @@
                         const link = this.getAttribute('data-link');
                         const isSpecial = this.getAttribute('data-special') === 'true';
                         if (isSpecial) {
-                            // "سرور lac vanila" => just show message? but we want to copy? wait, we have separate copy btn.
-                            // for special card we do nothing? but we have dedicated copy button. we just ignore.
-                            // but we can show alert? we follow requirement: "یک دکمه که روش نوشته کد حذف تبلیغ" is separate.
-                            // So special card is just a card with join button, but we don't want to open link? but we set link '#' 
-                            // we keep it as join but no action.
-                            if (link === '#') {
-                                // maybe we show a small message? we can ignore.
-                                // but we don't want to break.
-                                return;
-                            }
+                            // special card (lac vanilla) - just do nothing or maybe show a hint?
+                            // we ignore, but we can show a small message? we keep silent.
+                            return;
                         }
                         if (link && link !== '#') {
                             window.open(link, '_blank');
-                        } else {
-                            // if it's #, do nothing
                         }
                     });
                 });
             }
 
-            // ---------- copy del ad ----------
+            // ---------- copy ad code (new behavior: show alert with 0000) ----------
             copyDelAdBtn.addEventListener('click', function() {
                 const langData = data[currentLang];
                 const code = langData.copyValue;
+                // new: show alert with "زنگ بزن 0000 تا کد حذف بشه" 
+                // but also copy code to clipboard
                 navigator.clipboard.writeText(code).then(() => {
-                    alert('✅ کد کپی شد! / Code copied!');
+                    alert('✅ کد کپی شد! / Code copied!\n📞 زنگ بزن 0000 تا کد حذف بشه');
                 }).catch(() => {
-                    // fallback
                     const textarea = document.createElement('textarea');
                     textarea.value = code;
                     document.body.appendChild(textarea);
                     textarea.select();
                     document.execCommand('copy');
                     textarea.remove();
-                    alert('✅ کد کپی شد! / Code copied!');
+                    alert('✅ کد کپی شد! / Code copied!\n📞 زنگ بزن 0000 تا کد حذف بشه');
                 });
             });
 
             // ---------- switch language ----------
             function setLanguage(lang) {
                 currentLang = lang;
-                // update active buttons
                 langFa.classList.toggle('active', lang === 'fa');
                 langEn.classList.toggle('active', lang === 'en');
-                // set dir
                 document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
                 document.documentElement.lang = lang;
-                // re-render cards
                 renderCards(lang);
+                // reapply theme class (unchanged)
             }
 
             // ---------- theme toggle ----------
@@ -445,23 +490,15 @@
 
             // ---------- init ----------
             function init() {
-                // default language: fa
                 setLanguage('fa');
-                // theme default dark
                 document.body.classList.remove('light');
                 currentTheme = 'dark';
-                // add event listeners
                 langFa.addEventListener('click', function() { setLanguage('fa'); });
                 langEn.addEventListener('click', function() { setLanguage('en'); });
                 themeToggle.addEventListener('click', toggleTheme);
-
-                // extra: if any card with special link #, we handle in click listener already.
-                // also we want to ensure special card join button does nothing (but it has link #)
-                // we can also set style for lac vanilla but fine.
             }
 
             init();
-
         })();
     </script>
 </body>
