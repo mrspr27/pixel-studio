@@ -88,14 +88,38 @@
             flex-direction: column;
         }
 
-        /* ----- top bar ----- */
+        /* ----- top bar with hamburger ----- */
         .top-bar {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             gap: 0.8rem 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .top-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .hamburger {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #cbc3ff;
+            background: none;
+            border: none;
+            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
+            transition: 0.2s;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            line-height: 1;
+        }
+        .hamburger:hover {
+            background: rgba(255,255,255,0.05);
+            transform: scale(1.05);
+        }
+        body.light .hamburger {
+            color: #1d1735;
         }
         .lang-group {
             display: flex;
@@ -313,7 +337,7 @@
             background: #9589ff;
         }
 
-        /* highlighted card (IDK groups) - soft glow instead of heavy animation */
+        /* highlighted card */
         .highlight-card {
             border-color: #ffb74d;
             box-shadow: 0 6px 0 #b86e1a, 0 0 20px rgba(255, 183, 77, 0.25);
@@ -338,7 +362,7 @@
             background: #ffcc80;
         }
 
-        /* pinned card - soft glow */
+        /* pinned card */
         .pinned-card {
             border-color: #ff6b8a;
             box-shadow: 0 6px 0 #b84a5e, 0 0 25px rgba(255, 107, 138, 0.2);
@@ -363,7 +387,6 @@
             background: #ff8aa3;
         }
 
-        /* subtle text inside pinned card */
         .pinned-sub {
             position: absolute;
             bottom: 4px;
@@ -394,6 +417,122 @@
             border-top-color: rgba(0,0,0,0.05);
         }
 
+        /* ----- MODAL PANEL ----- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(6px);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-panel {
+            background: rgba(28, 24, 50, 0.95);
+            border: 2px solid #8a7cf0;
+            border-radius: 40px;
+            padding: 2rem 2.5rem;
+            max-width: 520px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-panel {
+            transform: scale(1);
+        }
+        body.light .modal-panel {
+            background: rgba(240, 235, 220, 0.95);
+            border-color: #6a5bb8;
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            left: 18px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #cbc3ff;
+            transition: 0.2s;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1;
+        }
+        .modal-close:hover {
+            transform: rotate(90deg);
+            color: #ff6b8a;
+        }
+        body.light .modal-close {
+            color: #1d1735;
+        }
+        .modal-title {
+            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
+            font-size: 1.2rem;
+            color: #eee8ff;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px dashed #6b5ed6;
+            padding-bottom: 0.6rem;
+        }
+        body.light .modal-title {
+            color: #1d1738;
+        }
+        .modal-body {
+            font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            color: #d6d0ff;
+            line-height: 1.8;
+        }
+        body.light .modal-body {
+            color: #1d1738;
+        }
+        .modal-body .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .modal-body .btn-group button {
+            padding: 0.6rem 1.8rem;
+            border: none;
+            border-radius: 60px;
+            font-family: 'Press Start 2P', 'Vazirmatn', cursive;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 4px solid #1a1530;
+            box-shadow: 0 4px 0 #1a1530;
+        }
+        .modal-body .btn-group button:hover {
+            transform: translateY(-2px);
+        }
+        .modal-body .btn-group button:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        .btn-yes {
+            background: #4dd0e1;
+            color: #0b0820;
+        }
+        .btn-no {
+            background: #ff6b8a;
+            color: #0b0820;
+        }
+        .btn-yes:hover {
+            background: #6ddbea;
+        }
+        .btn-no:hover {
+            background: #ff8aa3;
+        }
+
         @media (max-width: 620px) {
             .pixel-wrapper { padding: 1.2rem 1rem; border-radius: 28px; }
             .pixel-header { font-size: 1.6rem; }
@@ -406,6 +545,8 @@
             .flag-emoji { font-size: 1.2rem; }
             .lang-badge { font-size: 0.4rem; padding: 0.1rem 0.5rem; }
             .pinned-sub { font-size: 0.45rem; right: 1.2rem; bottom: 3px; }
+            .hamburger { font-size: 1.6rem; }
+            .modal-panel { padding: 1.5rem; }
         }
         @media (max-width: 450px) {
             .pixel-wrapper { padding: 0.8rem 0.6rem; border-radius: 20px; }
@@ -415,6 +556,8 @@
             .flag-emoji { font-size: 1rem; }
             .lang-badge { font-size: 0.35rem; padding: 0.05rem 0.4rem; }
             .pinned-sub { font-size: 0.4rem; right: 0.8rem; bottom: 2px; }
+            .hamburger { font-size: 1.4rem; }
+            .modal-panel { padding: 1.2rem; }
         }
     </style>
 </head>
@@ -426,9 +569,12 @@
         <div class="content">
             <!-- top bar -->
             <div class="top-bar">
-                <div class="lang-group">
-                    <button class="lang-btn active" data-lang="fa" id="langFa">🇮🇷 فارسی</button>
-                    <button class="lang-btn" data-lang="en" id="langEn">🇬🇧 English</button>
+                <div class="top-left">
+                    <button class="hamburger" id="hamburgerBtn">☰</button>
+                    <div class="lang-group">
+                        <button class="lang-btn active" data-lang="fa" id="langFa">🇮🇷 فارسی</button>
+                        <button class="lang-btn" data-lang="en" id="langEn">🇬🇧 English</button>
+                    </div>
                 </div>
                 <button class="theme-btn" id="themeToggle">🌓 تم</button>
             </div>
@@ -443,9 +589,18 @@
         </div>
     </div>
 
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-panel">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div class="modal-title" id="modalTitle">عنوان</div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
     <script>
         (function() {
-            // ---------- data with new pinned card ----------
+            // ---------- data ----------
             const data = {
                 fa: {
                     title: 'مجموعهٔ پیکسل',
@@ -459,13 +614,25 @@
                             subtitle: 'کد حذف تبلیغ اینجاست'
                         },
                         { label: 'گروه عا نمیدانم تلگرام', link: 'https://t.me/+1tLJ3e2tvIs3YWY0', flag: '🇮🇷🇺🇸', lang: 'both' },
-                        { label: 'کانال تیمارستان پیکسلی روبیکا', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ', flag: '🇮🇷', lang: 'persian' },
+                        { label: 'پیکسل جم استودیو روبیکا / pixel gem studio rubika', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ', flag: '🇮🇷', lang: 'persian' },
                         { label: 'پیکسل گیف روبیکا', link: 'https://rubika.ir/joinc/EGDEIICB0SSMRFGCWKPLXWXLHPZYBCXZ', flag: '🇮🇷', lang: 'persian' },
                         { label: 'گروه عا نمیدانم روبیکا', link: 'https://rubika.ir/joing/+BAFABIJID0XTGYKISOYDNVWJPHQZLGNK', flag: '🇮🇷', lang: 'persian' },
                         { label: 'پیکسل گیف تلگرام', link: 'https://t.me/pixel_gifit', flag: '🇮🇷', lang: 'persian' }
                     ],
                     footer: 'مالک @itsspr27',
-                    joinText: '🎮 جوین'
+                    joinText: '🎮 جوین',
+                    modal: {
+                        channel: {
+                            title: 'کانال تلگرام',
+                            body: 'میخوای وارد چنل بشی ؟',
+                            yes: 'آره',
+                            no: 'خیر'
+                        },
+                        about: {
+                            title: 'درباره ما',
+                            body: 'درحال حاضر مالک کانال pixel gem studio و سرور به تنهایی سرور و کانال اصلی pixel gem studio را مدیریت میکند.\nکانال و گروه های دیگر دارای ۵ یا بیشتر ادمین دارد و آنها کنترل کانال و گروه هارا دارند.'
+                        }
+                    }
                 },
                 en: {
                     title: 'Pixel Collection',
@@ -479,19 +646,33 @@
                             subtitle: 'ad removal code is here'
                         },
                         { label: 'IDK Group Telegram', link: 'https://t.me/+1tLJ3e2tvIs3YWY0', flag: '🇮🇷🇺🇸', lang: 'both' },
-                        { label: 'Pixel Asylum Rubika', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ', flag: '🇮🇷', lang: 'persian' },
+                        { label: 'pixel gem studio rubika', link: 'https://rubika.ir/joinc/CJCIEHGA0QSRNAMRRAQIXPZFLWABGPOZ', flag: '🇮🇷', lang: 'persian' },
                         { label: 'Pixel GIF Rubika', link: 'https://rubika.ir/joinc/EGDEIICB0SSMRFGCWKPLXWXLHPZYBCXZ', flag: '🇮🇷', lang: 'persian' },
                         { label: 'IDK Group Rubika', link: 'https://rubika.ir/joing/+BAFABIJID0XTGYKISOYDNVWJPHQZLGNK', flag: '🇮🇷', lang: 'persian' },
                         { label: 'Pixel GIF Telegram', link: 'https://t.me/pixel_gifit', flag: '🇮🇷', lang: 'persian' }
                     ],
                     footer: 'owner @itsspr27',
-                    joinText: '🎮 Join'
+                    joinText: '🎮 Join',
+                    modal: {
+                        channel: {
+                            title: 'Telegram Channel',
+                            body: 'Do you want to join the channel?',
+                            yes: 'Yes',
+                            no: 'No'
+                        },
+                        about: {
+                            title: 'About Us',
+                            body: 'Currently, the owner of pixel gem studio channel and server manages the main pixel gem studio server and channel alone.\nOther channels and groups have 5 or more admins and they control the channels and groups.'
+                        }
+                    }
                 }
             };
 
             // state
             let currentLang = 'fa';
             let currentTheme = 'dark';
+            let isModalOpen = false;
+            let modalType = null; // 'channel' or 'about'
 
             // DOM refs
             const mainTitle = document.getElementById('mainTitle');
@@ -500,6 +681,11 @@
             const langFa = document.getElementById('langFa');
             const langEn = document.getElementById('langEn');
             const themeToggle = document.getElementById('themeToggle');
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalClose = document.getElementById('modalClose');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
 
             // get language badge HTML
             function getLangBadge(lang) {
@@ -521,7 +707,6 @@
                 const cards = langData.cards;
                 const joinText = langData.joinText;
                 
-                // sort: pinned first
                 const sorted = [...cards].sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
 
                 let html = '';
@@ -549,11 +734,9 @@
                 });
                 cardContainer.innerHTML = html;
 
-                // update footer and title
                 footerCredit.textContent = langData.footer;
                 mainTitle.textContent = langData.title;
 
-                // attach click listeners
                 document.querySelectorAll('.pixel-card .join-btn').forEach(btn => {
                     btn.addEventListener('click', function(e) {
                         e.stopPropagation();
@@ -563,6 +746,69 @@
                         }
                     });
                 });
+            }
+
+            // ---------- MODAL ----------
+            function openModal(type) {
+                const langData = data[currentLang];
+                const modalData = langData.modal[type];
+                if (!modalData) return;
+                
+                modalTitle.textContent = modalData.title;
+                
+                if (type === 'channel') {
+                    modalBody.innerHTML = `
+                        <p>${modalData.body}</p>
+                        <div class="btn-group">
+                            <button class="btn-yes" id="modalYes">${modalData.yes}</button>
+                            <button class="btn-no" id="modalNo">${modalData.no}</button>
+                        </div>
+                    `;
+                    // attach listeners
+                    setTimeout(() => {
+                        document.getElementById('modalYes')?.addEventListener('click', () => {
+                            closeModal();
+                            // open telegram channel
+                            const channelLink = currentLang === 'fa' ? 'https://t.me/pixel_gem_studio' : 'https://t.me/pixel_gem_studio';
+                            window.open(channelLink, '_blank');
+                        });
+                        document.getElementById('modalNo')?.addEventListener('click', closeModal);
+                    }, 50);
+                } else if (type === 'about') {
+                    modalBody.innerHTML = `<p style="white-space:pre-line;">${modalData.body}</p>`;
+                }
+                
+                modalOverlay.classList.add('active');
+                isModalOpen = true;
+                modalType = type;
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                isModalOpen = false;
+                modalType = null;
+            }
+
+            // toggle hamburger menu
+            function toggleHamburger() {
+                if (isModalOpen) {
+                    closeModal();
+                    return;
+                }
+                // show menu options: channel & about
+                // we show a small inline menu or just open channel? better to show two options
+                // we'll use a simple confirm-like approach with modal
+                const langData = data[currentLang];
+                const choice = confirm(
+                    currentLang === 'fa' 
+                        ? '1. Telegram Channel\n2. About Us\n\nکدام گزینه؟ (OK=کانال، Cancel=درباره ما)'
+                        : '1. Telegram Channel\n2. About Us\n\nWhich one? (OK=Channel, Cancel=About Us)'
+                );
+                if (choice) {
+                    openModal('channel');
+                } else {
+                    openModal('about');
+                }
             }
 
             // ---------- switch language ----------
@@ -595,6 +841,15 @@
                 langFa.addEventListener('click', function() { setLanguage('fa'); });
                 langEn.addEventListener('click', function() { setLanguage('en'); });
                 themeToggle.addEventListener('click', toggleTheme);
+                hamburgerBtn.addEventListener('click', toggleHamburger);
+                modalClose.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', function(e) {
+                    if (e.target === modalOverlay) closeModal();
+                });
+                // close on escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') closeModal();
+                });
             }
 
             init();
